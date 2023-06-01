@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class MonedaTest{
     @DisplayName("Verifica que las monedas sean las que acepta la maquina")
     @Test
-    public void VerificarMonedaTest(){
+    public void VerificarMoneda(){
         Moneda m = new Moneda100();
         Moneda m2 = new Moneda500();
         Moneda m3 = new Moneda1000();
@@ -24,6 +24,22 @@ public class MonedaTest{
         boolean resultado1500 = m4.verificarMoneda(1500);
         assertTrue(resultado1500, "la moneda de 1500 no ha sido aceptada");
     }
+    @DisplayName("Cualquier Moneda no valida")
+    @Test
+    public void MonedaInvalida(){
+       Moneda m5 = new Moneda() {
+           @Override
+           public int getValor() {
+               return 0;
+           }
+           public boolean verificarMoneda(int valor) {
+               return false;
+           }
+       };
+    boolean resultado = m5.verificarMoneda(0);
+    assertFalse(resultado, "la maquina ha aceptado una moneda incorrecta");
+    }
+
 }
 
 
