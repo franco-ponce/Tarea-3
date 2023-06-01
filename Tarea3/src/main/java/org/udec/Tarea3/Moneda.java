@@ -10,6 +10,18 @@ public abstract class Moneda {
     }
 
     public abstract int getValor();
+
+    public boolean verificarMoneda(int valor) {
+        switch (valor) {
+            case 100:
+            case 500:
+            case 1000:
+            case 1500:
+                return true; // La moneda es válida
+            default:
+                return false; // La moneda es inválida
+        }
+    }
 }
 
 class Moneda100 extends Moneda{
@@ -59,3 +71,4 @@ class Moneda500 extends Moneda{
         return valor;
     }
 }
+

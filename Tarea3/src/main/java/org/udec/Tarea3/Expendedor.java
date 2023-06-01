@@ -1,4 +1,4 @@
-package tarea2;
+package org.udec.Tarea3;
 public class Expendedor {
     private Deposito<Bebida> coca;
     private Deposito<Bebida> sprite;
