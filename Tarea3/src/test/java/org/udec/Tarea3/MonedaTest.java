@@ -7,7 +7,7 @@ import java.lang.annotation.Documented;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MonedaTest{
+public class MonedaTest{
     @DisplayName("Verifica que las monedas sean las que acepta la maquina")
     @Test
     public void VerificarMonedaTest(){
