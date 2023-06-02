@@ -8,25 +8,24 @@ class ExpendedorTest {
 
     @DisplayName("NoHayProductoTest")
     @Test
-    void NoHayProductosDisponibles() {
-        Expendedor expendedor = new Expendedor(0, 100);
+    public void NoHayProductosDisponibles() {
+        Expendedor expendedor = new Expendedor(0);
         Moneda moneda = new Moneda100();
-        Expendedor.ProductoEnum producto = Expendedor.ProductoEnum.COCA;
+        Expendedor.ProductoEnum numeroProducto = Expendedor.ProductoEnum.COCA;
         assertThrows(NoHayProductoException.class, () -> {
-            expendedor.comprarProducto(moneda, producto);
+            expendedor.comprarProducto(moneda, numeroProducto);
         }, "Debe saltar un NoHayProductoException");
     }
-
     @Test
     @DisplayName("PagoInsuficienteTest")
-    void testNoSeHaDepositadoMoneda() {
-        Expendedor expendedor = new Expendedor(10, 100);
+    public void testNoSeHaDepositadoMoneda() {
+        Expendedor expendedor = new Expendedor(10);
 
         Moneda moneda = null;
-        Expendedor.ProductoEnum producto = Expendedor.ProductoEnum.COCA;
+        Expendedor.ProductoEnum numeroProducto = Expendedor.ProductoEnum.COCA;
 
         assertThrows(PagoIncorrectoException.class, () -> {
-            expendedor.comprarProducto(moneda, producto);
+            expendedor.comprarProducto(moneda, numeroProducto);
         }, "Debe saltar un PagoInsuficienteException");
     }
 }

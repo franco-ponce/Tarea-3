@@ -6,18 +6,27 @@ public class Expendedor {
     private Deposito<Dulces> super8;
     private Deposito<Moneda> MonVu;
     private int vuelto;
-    private int precio;
+    private PrecioProducto precio;
 
-    public enum ProductoEnum {
-        COCA,
-        SPRITE,
-        SNICKER,
-        SUPER8
+    public enum ProductoEnum {COCA, SPRITE, SNICKER, SUPER8}
+    public enum PrecioProducto {
+        COCA(1200),
+        SPRITE(1000),
+        SNICKER(500),
+        SUPER8(400);
+
+        private int precio;
+
+        PrecioProducto(int precio) {
+            this.precio = precio;
+        }
+        public int getPrecio() {
+            return precio;
+        }
     }
 
-    public Expendedor(int numProducto, int precioProductos) {
+    public Expendedor(int numProducto) {
         this.vuelto = 0;
-        this.precio = precioProductos;
         this.coca = new Deposito<>();
         this.sprite = new Deposito<>();
         this.snicker = new Deposito<>();
@@ -40,6 +49,7 @@ public class Expendedor {
                 throw new NoHayProductoException("No quedan productos");
             } else {
                 int a = m.getSerie().getValor();
+                int precio = PrecioProducto.valueOf(producto.name()).getPrecio();
                 if (a < precio) {
                     MonVu.addDeposito(m);
                     throw new PagoInsuficienteException("El dinero no es suficiente");
@@ -105,8 +115,8 @@ public class Expendedor {
         }
         return null;
     }
-
     public Moneda getVuelto() {
         return MonVu.getDeposito();
     }
 }
+
