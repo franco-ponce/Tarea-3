@@ -8,9 +8,20 @@ import java.lang.annotation.Documented;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class MonedaTest{
+    @DisplayName("Hay que ingresar una moneda")
+    @Test
+    public void PagoIncorrecto() {
+        Expendedor expendedor = new Expendedor(2);
+        Moneda x = null;
+        Expendedor.ProductoEnum cocacola = Expendedor.ProductoEnum.COCA;
+        Exception e = assertThrows(PagoIncorrectoException.class, () -> {
+            expendedor.comprarProducto(x, cocacola);
+        }, "Pago Incorrecto");
+    }
+
     @DisplayName("Verifica que las monedas sean las que acepta la maquina")
     @Test
-    public void VerificarMoneda(){
+    public void VerificarMoneda() throws Exception{
         Moneda m = new Moneda100();
         Moneda m2 = new Moneda500();
         Moneda m3 = new Moneda1000();
@@ -26,21 +37,24 @@ public class MonedaTest{
     }
     @DisplayName("Cualquier Moneda no valida")
     @Test
-    public void MonedaInvalida(){
-       Moneda m5 = new Moneda() {
-           @Override
-           public int getValor() {
-               return 0;
-           }
-           public boolean verificarMoneda(int valor) {
-               return false;
-           }
-       };
-    boolean resultado = m5.verificarMoneda(0);
-    assertFalse(resultado, "la maquina ha aceptado una moneda incorrecta");
+    public void MonedaInvalida() throws Exception{
+        Moneda m5 = new Moneda() {
+            @Override
+            public int getValor() {
+                return 0;
+            }
+            public boolean verificarMoneda(int valor) {
+                return false;
+            }
+        };
+        boolean resultado = m5.verificarMoneda(0);
+        assertFalse(resultado, "la maquina ha aceptado una moneda incorrecta");
     }
 
 }
+
+
+
 
 
 

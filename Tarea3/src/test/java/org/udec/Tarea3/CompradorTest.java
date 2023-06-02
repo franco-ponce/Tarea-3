@@ -19,7 +19,7 @@ class CompradorTest {
     }
     @DisplayName("Hace la compra de 2 sprites")
     @Test
-    public void testComprar_Dos_Sprites_Seguidas() {
+    public void testComprar_Dos_Sprites_Seguidas() throws Exception{
         Expendedor.ProductoEnum a = Expendedor.ProductoEnum.SPRITE;
         m = new Moneda1000();
         try {
@@ -35,7 +35,7 @@ class CompradorTest {
     }
     @DisplayName("Hace la compra de 2 cocacolas")
     @Test
-    public void testComprar_Dos_Cocacolas_Seguidas() {
+    public void testComprar_Dos_Cocacolas_Seguidas() throws Exception{
         Expendedor.ProductoEnum a = Expendedor.ProductoEnum.COCA;
         m = new Moneda1500();
         try {
@@ -51,7 +51,7 @@ class CompradorTest {
     }
     @DisplayName("Hace la compra de 2 super 8")
     @Test
-    public void testComprar_Dos_Super8_Seguidos() {
+    public void testComprar_Dos_Super8_Seguidos() throws Exception{
         Expendedor.ProductoEnum a = Expendedor.ProductoEnum.SUPER8;
         m = new Moneda500();
         try {
@@ -68,7 +68,7 @@ class CompradorTest {
     }
     @DisplayName("Hace la compra de 2 snickers")
     @Test
-    public void testComprar_Dos_Snickers_Seguidos() {
+    public void testComprar_Dos_Snickers_Seguidos() throws Exception{
         Expendedor.ProductoEnum a = Expendedor.ProductoEnum.SNICKER;
         m = new Moneda500();
         try {
